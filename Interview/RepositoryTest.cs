@@ -196,5 +196,58 @@ namespace Interview
 
         }
 
+        [TestMethod]
+        public void Repository_can_init_with_empty_dataset()
+        {
+            //Arrange
+            var repo = new Repository(null);
+
+            //Action
+            var flights = repo.GetAll();
+
+            //Assert
+            Assert.IsNotNull(flights);
+
+            Assert.IsTrue(flights.Count() == 0);
+        }
+
+
+        [TestMethod]
+        public void Repository_delete_should_not_affect_if_record_not_exist()
+        {
+            //Arrange
+            var data = new List<Flight>() {
+                new Flight { Id = 4, Number = "4Random" },
+                new Flight { Id = 1, Number = "1Random" },
+                new Flight { Id = 3, Number = "3Random" },
+                new Flight { Id = 2, Number = "2Random" },
+            };
+            var repo = new Repository(data);
+
+            //Action
+            repo.Delete(0);
+
+            repo.Delete(5);
+
+            repo.Delete(7);
+
+            repo.Delete(1000);
+
+            var flights = repo.GetAll().ToList();
+
+            //Assert
+            Assert.IsTrue(flights.Count == data.Count);
+
+            Assert.AreEqual(flights[0].Id, data[1].Id);
+
+            Assert.AreEqual(flights[1].Id, data[3].Id);
+
+            Assert.AreEqual(flights[2].Id, data[2].Id);
+
+            Assert.AreEqual(flights[3].Id, data[0].Id);
+        }
+
+
+
     }
 }
