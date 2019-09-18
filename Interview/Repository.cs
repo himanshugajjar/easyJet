@@ -55,7 +55,16 @@ namespace Interview
         {
             if (flight != null && flight.Id != 0 && !string.IsNullOrEmpty(flight.Number))
             {
-                _dataSet.Add(flight);
+                var record = _dataSet.FirstOrDefault(x => x.Id == flight.Id);
+
+                if (record == null)
+                {
+                    _dataSet.Add(flight);
+                }
+                else
+                {
+                    record.Number = flight.Number;
+                }
             }
         }
     }
