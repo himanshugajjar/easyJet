@@ -49,7 +49,7 @@ namespace Interview
         }
 
         [TestMethod]
-        public void Repository_should_save_valid_record()
+        public void Repository_should_not_save_invalid_record()
         {
             //Arrange
             var data = new List<Flight>() { new Flight { Id = 3, Number = "3Random" } };
@@ -71,5 +71,6 @@ namespace Interview
 
             Assert.IsTrue(flight.Number == "3Random");
         }
+
     }
 }

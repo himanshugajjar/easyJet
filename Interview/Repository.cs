@@ -27,7 +27,23 @@ namespace Interview
 
         public Flight Get(long id)
         {
-            return _dataSet.FirstOrDefault(x => x.Id == id);
+            Flight result = null;
+
+            try
+            {
+                var record = _dataSet.FirstOrDefault(x => x.Id == id);
+
+                if (record != null)
+                {
+                    result = new Flight { Id = record.Id, Number = record.Number };
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return result;
         }
 
         public IEnumerable<Flight> GetAll()
@@ -39,16 +55,7 @@ namespace Interview
         {
             if (flight != null && flight.Id != 0 && !string.IsNullOrEmpty(flight.Number))
             {
-                var record = _dataSet.FirstOrDefault(x => x.Id == flight.Id);
-
-                if (record == null)
-                {
-                    _dataSet.Add(flight);
-                }
-                else
-                {
-                    record.Number = flight.Number;
-                }
+                _dataSet.Add(flight);
             }
         }
     }
