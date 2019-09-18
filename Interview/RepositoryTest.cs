@@ -34,7 +34,7 @@ namespace Interview
         public void Repository_get_should_retrun_valid_record()
         {
             //Arrange
-            var data = new List<Flight>() { new Flight { Id = 2, Number = "2Rendom" } };
+            var data = new List<Flight>() { new Flight { Id = 2, Number = "2Random" } };
             var repo = new Repository(data);
 
             //Action

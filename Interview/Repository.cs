@@ -27,7 +27,7 @@ namespace Interview
 
         public Flight Get(long id)
         {
-            return new Flight { Id = 1, Number = "U2 2265" };
+            return _dataSet.FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Flight> GetAll()
