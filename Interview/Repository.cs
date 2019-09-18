@@ -62,7 +62,7 @@ namespace Interview
 
         public IEnumerable<Flight> GetAll()
         {
-            return _dataSet;
+            return _dataSet.Select(x => new Flight { Id = x.Id, Number = x.Number });
         }
 
         public void Save(Flight flight)

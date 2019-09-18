@@ -167,5 +167,34 @@ namespace Interview
             Assert.IsNotNull(flights.FirstOrDefault(x => x.Id == data[3].Id && x.Number == data[3].Number));
         }
 
+        [TestMethod]
+        public void Repository_GetAll_should_return_records_in_default_order()
+        {
+
+            //Arrange
+            var data = new List<Flight>() {
+                new Flight { Id = 4, Number = "4Random" },
+                new Flight { Id = 1, Number = "1Random" },
+                new Flight { Id = 3, Number = "3Random" },
+                new Flight { Id = 2, Number = "2Random" },
+            };
+            var repo = new Repository(data);
+
+            //Action
+            var flights = repo.GetAll().OrderBy(x => x.Id).ToList();
+
+            //Assert
+            Assert.IsTrue(flights.Count == data.Count);
+
+            Assert.AreEqual(flights[0].Id, data[0].Id);
+
+            Assert.AreEqual(flights[1].Id, data[1].Id);
+
+            Assert.AreEqual(flights[2].Id, data[2].Id);
+
+            Assert.AreEqual(flights[3].Id, data[3].Id);
+
+        }
+
     }
 }
