@@ -72,5 +72,31 @@ namespace Interview
             Assert.IsTrue(flight.Number == "3Random");
         }
 
+        [TestMethod]
+        public void Repository_should_update_existing_record()
+        {
+            //Arrange
+            var data = new List<Flight>() { new Flight { Id = 3, Number = "3Random" } };
+            var repo = new Repository(data);
+
+            //Action
+            var flight = repo.Get(3);
+
+            flight.Number = "update_3random";
+
+            repo.Save(flight);
+
+            flight = repo.Get(3);
+
+            //Assert
+            Assert.IsNotNull(flight);
+
+            Assert.IsTrue(flight.Id == 3);
+
+            Assert.IsFalse(flight.Number == "3Random");
+
+            Assert.IsTrue(flight.Number == "update_3random");
+        }
+
     }
 }
