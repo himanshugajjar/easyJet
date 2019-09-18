@@ -6,14 +6,18 @@ namespace Interview
 {
     public class Repository : IRepository<Flight, long>
     {
-        // TODO: I prefered this Inmemeory dataset should have its own implementation so 
-        // I can inject is and mock this to test other method
-
         private readonly IList<Flight> _dataSet;
 
-        public Repository()
+        public Repository(IList<Flight> dataSet)
         {
-            _dataSet = new List<Flight>();
+            if (dataSet == null || !dataSet.Any())
+            {
+                _dataSet = new List<Flight>();
+            }
+            else
+            {
+                _dataSet = dataSet;
+            }
         }
 
         public void Delete(long id)

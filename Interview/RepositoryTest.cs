@@ -11,7 +11,7 @@ namespace Interview
         public void Repository_save_should_add_record_to_in_memory()
         {
             //Arrange
-            var repo = new Repository();
+            var repo = new Repository(null);
 
             //Action
             repo.Save(new Flight()
