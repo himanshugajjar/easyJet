@@ -52,16 +52,17 @@ namespace Interview
         public void Repository_should_save_valid_record()
         {
             //Arrange
-            var flight = new Flight { Id = 3, Number = "3Random" };
-            var data = new List<Flight>() {  flight };
+            var data = new List<Flight>() { new Flight { Id = 3, Number = "3Random" } };
             var repo = new Repository(data);
 
             //Action
-            flight = repo.Get(3);
+            var flight = repo.Get(3);
 
             flight.Number = null;
 
             repo.Save(flight);
+
+            flight = repo.Get(3);
 
             //Assert
             Assert.IsNotNull(flight);

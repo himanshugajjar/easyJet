@@ -37,7 +37,19 @@ namespace Interview
 
         public void Save(Flight flight)
         {
-            _dataSet.Add(flight);
+            if (flight != null && flight.Id != 0 && !string.IsNullOrEmpty(flight.Number))
+            {
+                var record = _dataSet.FirstOrDefault(x => x.Id == flight.Id);
+
+                if (record == null)
+                {
+                    _dataSet.Add(flight);
+                }
+                else
+                {
+                    record.Number = flight.Number;
+                }
+            }
         }
     }
 }
