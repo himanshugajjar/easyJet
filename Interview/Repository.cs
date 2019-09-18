@@ -24,7 +24,7 @@ namespace Interview
         {
             try
             {
-                var record = _dataSet.FirstOrDefault(x => x.Id == id);
+                var record = _dataSet?.FirstOrDefault(x => x.Id == id);
 
                 if (record != null)
                 {
@@ -45,7 +45,7 @@ namespace Interview
 
             try
             {
-                var record = _dataSet.FirstOrDefault(x => x.Id == id);
+                var record = _dataSet?.FirstOrDefault(x => x.Id == id);
 
                 if (record != null)
                 {
@@ -62,12 +62,12 @@ namespace Interview
 
         public IEnumerable<Flight> GetAll()
         {
-            return _dataSet.Select(x => new Flight { Id = x.Id, Number = x.Number }).OrderBy(y => y.Id);
+            return _dataSet?.Select(x => new Flight { Id = x.Id, Number = x.Number }).OrderBy(y => y.Id);
         }
 
         public void Save(Flight flight)
         {
-            if (flight != null && flight.Id != 0 && !string.IsNullOrEmpty(flight.Number))
+            if (flight != null && _dataSet != null && flight.Id != 0 && !string.IsNullOrEmpty(flight.Number))
             {
                 var record = _dataSet.FirstOrDefault(x => x.Id == flight.Id);
 

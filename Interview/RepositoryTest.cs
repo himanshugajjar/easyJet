@@ -29,6 +29,9 @@ namespace Interview
             Assert.IsTrue(flight.Id == 1);
 
             Assert.IsTrue(flight.Number == "U2 2265");
+
+            Assert.IsTrue(repo.GetAll().Count() == 1);
+
         }
 
         [TestMethod]
@@ -47,6 +50,7 @@ namespace Interview
             Assert.IsTrue(flight.Id == 2);
 
             Assert.IsTrue(flight.Number == "2Random");
+
         }
 
         [TestMethod]
@@ -197,7 +201,7 @@ namespace Interview
         }
 
         [TestMethod]
-        public void Repository_can_init_with_empty_dataset()
+        public void Repository_auto_init_with_empty_dataset()
         {
             //Arrange
             var repo = new Repository(null);
