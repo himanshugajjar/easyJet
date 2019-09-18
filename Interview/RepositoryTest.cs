@@ -186,13 +186,13 @@ namespace Interview
             //Assert
             Assert.IsTrue(flights.Count == data.Count);
 
-            Assert.AreEqual(flights[0].Id, data[0].Id);
+            Assert.AreEqual(flights[0].Id, data[1].Id);
 
-            Assert.AreEqual(flights[1].Id, data[1].Id);
+            Assert.AreEqual(flights[1].Id, data[3].Id);
 
             Assert.AreEqual(flights[2].Id, data[2].Id);
 
-            Assert.AreEqual(flights[3].Id, data[3].Id);
+            Assert.AreEqual(flights[3].Id, data[0].Id);
 
         }
 
