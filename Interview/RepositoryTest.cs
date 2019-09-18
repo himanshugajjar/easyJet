@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Interview
@@ -138,7 +139,27 @@ namespace Interview
 
         }
 
+        [TestMethod]
+        public void Repository_GetAll_should_return_all_records()
+        {
 
+            //Arrange
+            var data = new List<Flight>() {
+                new Flight { Id = 1, Number = "1Random" },
+                new Flight { Id = 2, Number = "2Random" },
+                new Flight { Id = 3, Number = "3Random" },
+                new Flight { Id = 4, Number = "4Random" },
+            };
+            var repo = new Repository(data);
+
+            //Action
+            var flights = repo.GetAll().ToList();
+
+            //Assert
+            Assert.IsTrue(flights.Count == data.Count);
+
+            Assert.IsNotNull(flights.FirstOrDefault(x => x.Id == data[0].Id && x.Number == data[0].Number));
+        }
 
     }
 }
