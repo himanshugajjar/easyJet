@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Interview
@@ -21,7 +22,6 @@ namespace Interview
 
             var flight = repo.Get(1);
 
-
             //Assert
             Assert.IsNotNull(flight);
 
@@ -29,5 +29,6 @@ namespace Interview
 
             Assert.IsTrue(flight.Number == "U2 2265");
         }
+
     }
 }
