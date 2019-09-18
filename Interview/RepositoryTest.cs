@@ -98,5 +98,45 @@ namespace Interview
             Assert.IsTrue(flight.Number == "update_3random");
         }
 
+        [TestMethod]
+        public void Repository_delete_should_remove_correct_record()
+        {
+            //Arrange
+            var data = new List<Flight>() {
+                new Flight { Id = 1, Number = "1Random" },
+                new Flight { Id = 2, Number = "2Random" },
+                new Flight { Id = 3, Number = "3Random" },
+                new Flight { Id = 4, Number = "4Random" },
+            };
+            var repo = new Repository(data);
+
+            //Action
+            repo.Delete(1);
+            repo.Delete(3);
+
+            var flight1 = repo.Get(1);
+            var flight2 = repo.Get(2);
+            var flight3 = repo.Get(3);
+            var flight4 = repo.Get(4);
+
+            //Assert
+            Assert.IsNull(flight1);
+
+            Assert.IsNull(flight3);
+
+            Assert.IsNotNull(flight2);
+
+            Assert.IsNotNull(flight4);
+
+            Assert.IsTrue(flight2.Id == 2);
+
+            Assert.IsTrue(flight2.Number == "2Random");
+
+            Assert.IsTrue(flight4.Id == 4);
+
+            Assert.IsTrue(flight4.Number == "4Random");
+
+        }
+
     }
 }
