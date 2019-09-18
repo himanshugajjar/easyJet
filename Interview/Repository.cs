@@ -22,7 +22,21 @@ namespace Interview
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var record = _dataSet.FirstOrDefault(x => x.Id == id);
+
+                if (record != null)
+                {
+                    _dataSet.Remove(record);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public Flight Get(long id)
