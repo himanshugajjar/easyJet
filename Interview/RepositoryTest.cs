@@ -27,7 +27,7 @@ namespace Interview
 
             Assert.IsTrue(flight.Id == 1);
 
-            Assert.IsTrue(flight.Name == "U2 2265");
+            Assert.IsTrue(flight.Number == "U2 2265");
         }
     }
 }
