@@ -62,7 +62,7 @@ namespace Interview
 
         public IEnumerable<Flight> GetAll()
         {
-            throw new NotImplementedException();
+            return _dataSet;
         }
 
         public void Save(Flight flight)

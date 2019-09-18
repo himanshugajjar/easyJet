@@ -159,6 +159,12 @@ namespace Interview
             Assert.IsTrue(flights.Count == data.Count);
 
             Assert.IsNotNull(flights.FirstOrDefault(x => x.Id == data[0].Id && x.Number == data[0].Number));
+
+            Assert.IsNotNull(flights.FirstOrDefault(x => x.Id == data[1].Id && x.Number == data[1].Number));
+
+            Assert.IsNotNull(flights.FirstOrDefault(x => x.Id == data[2].Id && x.Number == data[2].Number));
+
+            Assert.IsNotNull(flights.FirstOrDefault(x => x.Id == data[3].Id && x.Number == data[3].Number));
         }
 
     }
