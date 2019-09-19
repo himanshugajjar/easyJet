@@ -5,3 +5,7 @@
 /.vs
 /Interview/bin/Debug
 /Interview/obj
+/packages
+/Interview/Interview.csproj.user
+/FlightRepository/bin/Debug
+/FlightRepository/obj

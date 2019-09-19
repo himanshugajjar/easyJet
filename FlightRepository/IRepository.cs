@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Interview
+namespace FlightRepository
 {
     // Please create an in memory implementation of IRepository<T, I> 
 
