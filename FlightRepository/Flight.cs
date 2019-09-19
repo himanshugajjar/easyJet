@@ -1,4 +1,4 @@
-﻿namespace Interview
+﻿namespace FlightRepository
 {
     public class Flight : IStoreable<long>
     {

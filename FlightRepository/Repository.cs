@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Interview
+namespace FlightRepository
 {
     public class Repository : IRepository<Flight, long>
     {
